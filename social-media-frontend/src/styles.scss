@@ -1,0 +1,237 @@
+/* You can add global styles to this file, and also import other style files */
+@use "@angular/material" as mat;
+
+@import "@angular/material/theming";
+
+@include mat.core();
+
+$angular-primary: mat.define-palette(mat.$indigo-palette);
+$angular-accent: mat.define-palette(mat.$pink-palette);
+
+$angular-warn: mat.define-palette(mat.$red-palette);
+
+$angular-default-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $angular-primary,
+      accent: $angular-accent,
+      warn: $angular-warn,
+    ),
+  )
+);
+
+@include mat.all-component-themes($angular-default-theme);
+
+$angular-dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $angular-primary,
+      accent: $angular-accent,
+      warn: $angular-warn,
+    ),
+  )
+);
+:root {
+  --noti-color: rgb(63, 32, 240);
+  --noti-hoover: rgba(63, 32, 240, 0.6);
+}
+
+.darkMode {
+  @include mat.all-component-colors($angular-dark-theme);
+  --noti-color: #d63384;
+  --noti-hoover: #d6338494;
+}
+
+html,
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  max-height: 100vh;
+}
+
+.root {
+  height: 100vh;
+}
+
+.app-header {
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  z-index: 2;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+}
+.login-wrapper {
+  height: 100%;
+}
+.positronx {
+  text-decoration: none;
+  color: #ffffff;
+}
+.box {
+  position: relative;
+  top: 0;
+  opacity: 1;
+  float: left;
+  padding: 60px 50px 40px 50px;
+  width: 100%;
+  border-radius: 10px;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  z-index: 5;
+  max-width: 330px;
+}
+.box.back {
+  transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  top: -20px;
+  opacity: 0.8;
+  z-index: -1;
+}
+.box:before {
+  content: "";
+  width: 100%;
+  height: 30px;
+  border-radius: 10px;
+  position: absolute;
+  top: -10px;
+  left: 0;
+  transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  z-index: -1;
+}
+.login-wrapper .example-form {
+  min-width: 100%;
+  max-width: 300px;
+  width: 100%;
+}
+.login-wrapper .example-full-width,
+.login-wrapper .btn-block {
+  width: 100%;
+}
+.login-wrapper mat-card-header {
+  text-align: center;
+  width: 100%;
+  display: block;
+  font-weight: 700;
+}
+.login-wrapper mat-card-header mat-card-title {
+  font-size: 30px;
+  margin: 0;
+}
+.login-wrapper .mat-card {
+  padding: 40px 70px 50px;
+}
+.login-wrapper .mat-stroked-button {
+  border: 1px solid currentColor;
+  line-height: 54px;
+}
+.login-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 0.8375em 0;
+}
+
+.login-rerout-link {
+  float: right;
+  padding-top: 0.5em;
+}
+
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 4em;
+}
+
+.user-circle {
+  width: 10em;
+  height: 10em;
+  border-radius: 7em;
+
+  border: 1px solid #888080;
+
+  margin-bottom: 1em;
+
+  background-image: url("./assets/images/favicon.png");
+  background-size: cover;
+}
+
+.user-card {
+  width: auto;
+  text-align: center;
+  margin: 1em;
+}
+
+.sidebyside {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.post-feed-container {
+  width: 80%;
+  margin-top: 1em;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.partial-width {
+  width: 60%;
+}
+
+.header-image {
+  background-image: url("./assets/images/favicon.png");
+  background-size: cover;
+
+  border: 1px solid #888080;
+}
+
+#post-feed {
+  // margin: auto;
+  width: 60%;
+  align-content: center;
+}
+
+.post-card {
+  margin-bottom: 1em;
+}
+
+.form {
+  // margin:auto;
+  // width:60%;
+  margin-bottom: 1em;
+}
+
+.comment-container {
+  margin-left: 2em;
+}
+
+.comment-reply {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.scrollview {
+  height: 100vh;
+  width: 90%;
+  padding-inline: 50px;
+  margin-bottom: 2px;
+  position: relative;
+}
+
+.post-feed {
+  margin-right: 2rem;
+}
+
+app-navbar {
+  margin: 0;
+}

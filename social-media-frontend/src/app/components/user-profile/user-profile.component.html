@@ -1,0 +1,90 @@
+<div class="container">
+  <div>
+    <img class="user-circle" [src]="getImg(profileOwner.id)" />
+    <div>
+      <div
+        class="profile-owner-details"
+        *ngIf="!isEditing; else editProfileForm"
+      >
+        <h2>
+          @{{ profileOwner.userName }}
+          <follow-status-button
+            [(profileOwner)]="profileOwner"
+            *ngIf="!isCurrentUserProfile"
+          ></follow-status-button>
+          <button
+            mat-raised-button
+            color="primary"
+            *ngIf="isCurrentUserProfile"
+            (click)="toggleEditMode()"
+          >
+            Edit Profile
+          </button>
+        </h2>
+        <h3>
+          {{ profileOwner.firstName }} {{ profileOwner.lastName
+          }}<verified-icon></verified-icon>
+        </h3>
+        <h4>{{ profileOwner.aboutMe }}</h4>
+      </div>
+      <ng-template #editProfileForm>
+        <form class="profile-update-form" [formGroup]="updateProfileForm">
+          <mat-form-field class="partial-width" appearance="outline">
+            <mat-label>Username</mat-label>
+            <textarea matInput autofocus formControlName="userName"></textarea>
+          </mat-form-field>
+          <mat-form-field class="partial-width" appearance="outline">
+            <mat-label>First Name</mat-label>
+            <textarea matInput autofocus formControlName="firstName"></textarea>
+          </mat-form-field>
+          <mat-form-field class="partial-width" appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <textarea matInput autofocus formControlName="lastName"></textarea>
+          </mat-form-field>
+          <mat-form-field class="partial-width" appearance="outline">
+            <mat-label>About Me</mat-label>
+            <textarea matInput autofocus formControlName="aboutMe"></textarea>
+          </mat-form-field>
+          <div class="partial-width" align="right">
+            <button mat-raised-button color="warn" (click)="toggleEditMode()">
+              Cancel
+            </button>
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="updateProfile($event)"
+            >
+              Update
+            </button>
+          </div>
+        </form>
+      </ng-template>
+      <ul class="flex-menu">
+        <li>
+          <strong>{{ postCount }}</strong> posts
+        </li>
+        <li>
+          <strong>{{ profileOwner.followersCount }}</strong> followers
+        </li>
+        <li>
+          <strong>{{ profileOwner.followingsCount }}</strong> following
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <cdk-virtual-scroll-viewport
+    itemSize="200"
+    minBufferPx="6000"
+    maxBufferPx="12000"
+    class="scrollview"
+  >
+    <div class="post-feed" *cdkVirtualFor="let post of posts">
+      <app-post
+        (handleDeletePost)="deletePost($event)"
+        [post]="post"
+      ></app-post>
+    </div>
+  </cdk-virtual-scroll-viewport>
+</div>

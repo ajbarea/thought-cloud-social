@@ -1,0 +1,69 @@
+<mat-toolbar *ngIf="auth$ | async as auth">
+  <mat-toolbar-row>
+    <button
+      mat-icon-button
+      color="accent"
+      (click)="expandSideNav()"
+      *ngIf="auth.loggedIn"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <span class="mx-4 logo" [routerLink]="['/post-feed']"
+      >ThoughtCloud
+      <img
+        class="filter"
+        src="../../../assets/images/thoughtcloud_icon.png"
+        alt="Logo"
+      />
+    </span>
+    <button
+      mat-icon-button
+      color="accent"
+      aria-label="Example icon button with a menu icon"
+      (click)="toggleTheme()"
+    >
+      <mat-icon>invert_colors</mat-icon>
+    </button>
+    <button
+      *ngIf="auth.loggedIn"
+      mat-icon-button
+      [matMenuTriggerFor]="menu"
+      (menuOpened)="toggleNotes()"
+      (menuClosed)="toggleNotes()"
+      color="accent"
+      aria-label="Example icon button with a menu icon"
+    >
+      <mat-icon [matBadge]="count" [matBadgeHidden]="menuOpen || count == 0"
+        >notifications_on</mat-icon
+      >
+    </button>
+    <mat-menu class="{{ (preferences$ | async)?.theme }}" #menu="matMenu">
+      <div *ngIf="notes$ | async as notes">
+        <a *ngIf="notes.length == 0" mat-menu-item routerLink="/notifications">
+          No unread notifications!
+        </a>
+      </div>
+
+      <a
+        routerLink="/notifications"
+        mat-menu-item
+        *ngFor="let notification of notes$ | async"
+        >{{ notification.sender.userName }} {{ notification.message }}</a
+      >
+    </mat-menu>
+    <span class="spacer"></span>
+    <search-bar-user *ngIf="auth.loggedIn"></search-bar-user>
+    <span class="spacer"></span>
+    <span class="spacer"></span>
+    <info-popover class="mat-app-background"></info-popover>
+
+    <button *ngIf="!auth.loggedIn" mat-button (click)="goToLogin()">
+      Login
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<app-sidenav-wrapper
+  *ngIf="preferences$ | async as pref"
+  [isExpanded]="pref?.sidebarExpanded ?? false"
+></app-sidenav-wrapper>

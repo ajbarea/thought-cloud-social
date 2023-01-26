@@ -1,0 +1,35 @@
+mat-sidenav-container {
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  min-width: 100%;
+  margin-top: 4em;
+  mat-icon {
+    color: #e91e63;
+  }
+  mat-sidenav {
+    mat-nav-list {
+      .menu-item {
+        margin-left: 8px;
+      }
+
+      .chevron-button {
+        transition: 300ms ease-in-out;
+        transform: rotate(0deg);
+      }
+
+      .chevron-button.rotated {
+        transform: rotate(180deg);
+      }
+    }
+    position: fixed;
+    top: 64px;
+  }
+}
+mat-sidenav-content {
+  padding-top: 1em;
+  padding-left: 1em;
+  height: 100%;
+
+  width: 100%;
+}

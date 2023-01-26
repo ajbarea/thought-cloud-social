@@ -4,16 +4,28 @@
 <!--- [![TDB Banking Application](https://res.cloudinary.com/marcomontalbano/image/upload/v1672957617/video_to_markdown/images/youtube--RiDxzmMX-qk-c05b58ac6eb4c4700831b2b3070cd403.jpg)](https://www.youtube.com/watch?v=RiDxzmMX-qk&ab_channel=AJBarea "TDB Banking Application") -->
 
 ## Tech Stack 
-- [ ] Java
+- [ ] Java 11
 - [ ] Apache Maven
 - [ ] PostgreSQL
 - [ ] Spring Boot
 - [ ] Spring Security
 - [ ] Git SCM
-- [ ] Postman
+- [ ] Amazon Web Services
+- [ ] Amazon Elastic Compute Cloud
+- [ ] Amazon Relational Database Service
+- [ ] Amazon Simple Storage Service
+- [ ] Amazon Simple Email Service
 - [ ] TypeScript
 - [ ] JUnit
 - [ ] Mockito
 - [ ] Angular 2+
+- [ ] Jasmine
+- [ ] Karma
+- [ ] HTML
+- [ ] CSS
 - [ ] Bootstrap
-- [ ] JWT
+- [ ] Jenkins
+- [ ] Hibernate
+- [ ] Docker
+- [ ] Linux
+
